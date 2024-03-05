@@ -1,0 +1,44 @@
+.mainBox {
+  max-width: 500px;
+  margin: auto;
+}
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin: 0 15px 15px 0;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #385898;
+  background-color: #e7f3ff;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+.btn:hover {
+  background-color: #dbe7f2;
+}
+.btn:active {
+  transform: scale(0.96);
+}
+.input {
+  padding-left: 20px;
+  height: 30px;
+  width: 300px;
+  margin-top: 50px;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  outline: 0;
+  border-radius: 15px;
+}
+.input:focus {
+  box-shadow: 0 0 15px 5px #b0e0ee;
+  border: 2px solid #bebede;
+}
