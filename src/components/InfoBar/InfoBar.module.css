@@ -1,0 +1,39 @@
+.container {
+  padding: 20px;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  width: 900px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e7f3ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  font-weight: 600;
+}
+.name {
+  max-width: 90px;
+}
+.theme {
+  max-width: 500px;
+}
+.tags {
+  max-width: 120px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 6px;
+  margin: 2px;
+}
+.countAnsw {
+  max-width: 100px;
+}
+.box {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-right: 50px;
+}

@@ -1,2 +1,6 @@
 import { combineReducers } from "redux";
-export const rootReducer = combineReducers({});
+import questionReducer from "./questions";
+
+export const rootReducer = combineReducers({
+  question: questionReducer,
+});
