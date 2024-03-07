@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import Styles from "./QuestionInfo.module.css";
+import { v4 as uuidv4 } from "uuid";
 
 interface IQuestionMain {
   obj: {};
@@ -17,7 +18,9 @@ const QuestionInfo: FC<IQuestionMain> = (obj: any) => {
         </a>
       </div>
       {obj.obj.tags.map((tag: any) => (
-        <div className={Styles.tag}>{tag}</div>
+        <div key={uuidv4()} className={Styles.tag}>
+          {tag}
+        </div>
       ))}
     </section>
   );
