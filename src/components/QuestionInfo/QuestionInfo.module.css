@@ -1,0 +1,32 @@
+.title {
+  max-width: 500px;
+  margin: auto;
+}
+.main {
+  margin: auto;
+  background-color: dimgrey;
+  max-width: 800px;
+  padding: 30px;
+  font-weight: 600;
+}
+.name {
+  margin-bottom: 30px;
+}
+.link {
+  margin: auto;
+  margin-top: 20px;
+  font-weight: 300;
+  max-width: 500px;
+  text-decoration: none;
+  transition: color 0.2s ease-in;
+}
+.link:hover {
+  color: cyan;
+}
+.tag {
+  background-color: cyan;
+  max-width: 150px;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 10px;
+}

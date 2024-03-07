@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Styles from "./PostList.module.css";
 import { v4 as uuidv4 } from "uuid";
+import { NavLink } from "react-router-dom";
 
 interface IQuestionMain {
   question: {};
@@ -8,7 +9,10 @@ interface IQuestionMain {
 
 const PostList: FC<IQuestionMain> = (question: any) => {
   return (
-    <section className={Styles.container}>
+    <NavLink
+      to={`/${question.question.question_id}`}
+      className={Styles.container}
+    >
       <div className={Styles.name}>{question.question.owner.display_name}</div>
       <div className={Styles.theme}>{question.question.title}</div>
       <div className={Styles.box}>
@@ -21,7 +25,7 @@ const PostList: FC<IQuestionMain> = (question: any) => {
           ))}
         </div>
       </div>
-    </section>
+    </NavLink>
   );
 };
 

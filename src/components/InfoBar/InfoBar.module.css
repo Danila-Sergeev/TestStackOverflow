@@ -6,10 +6,10 @@
   width: 900px;
   align-items: center;
   justify-content: space-between;
-  background-color: #e7f3ff;
-  border-radius: 10px;
+  background-color: #d5e8fc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.25s ease;
   font-weight: 600;
 }
 .name {

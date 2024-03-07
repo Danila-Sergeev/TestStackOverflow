@@ -9,14 +9,24 @@ import { v4 as uuidv4 } from "uuid";
 
 const HomePage: FC = (props) => {
   const question = useSelector((store: any) => store.question.items);
+  const questionSearch = useSelector((store: any) => store.question.sortItems);
+  const questionSort = useSelector((store: any) => store.sort.items);
   return (
     <div>
       <SearchBar />
       <SortBar />
       <InfoBar />
-      {question.map((questionData: any) => (
-        <PostList key={uuidv4()} question={questionData} />
-      ))}
+      {questionSearch.length === 0 || question === questionSearch
+        ? questionSort.length === 0
+          ? question.map((questionData: any) => (
+              <PostList key={uuidv4()} question={questionData} />
+            ))
+          : questionSort.map((questionData: any) => (
+              <PostList key={uuidv4()} question={questionData} />
+            ))
+        : questionSearch.map((questionData: any) => (
+            <PostList key={uuidv4()} question={questionData} />
+          ))}
     </div>
   );
 };

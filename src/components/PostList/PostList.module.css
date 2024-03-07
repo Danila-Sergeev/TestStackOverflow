@@ -1,4 +1,5 @@
 .container {
+  text-decoration: none;
   padding: 20px;
   margin: auto;
   margin-top: 20px;
@@ -9,6 +10,7 @@
   background-color: #e7f3ff;
   border-radius: 10px;
   cursor: pointer;
+  color: black;
   transition: background-color 0.25s ease;
 }
 .container:hover {

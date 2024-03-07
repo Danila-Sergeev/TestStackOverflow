@@ -6,32 +6,8 @@
   align-items: center;
   justify-content: center;
 }
-.btn {
-  text-decoration: none;
-  outline: none;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-}
-.upImg {
-  width: 30px;
-  transition: transform 0.25s ease;
-  transform: rotate(90deg);
-}
-.upImg:hover {
-  transform: scale(1.2) rotate(90deg);
-}
-.downImg {
-  width: 30px;
-  transform: rotate(-90deg);
-  margin-left: 10px;
-  transition: transform 0.25s ease;
-}
-.downImg:hover {
-  transform: scale(1.2) rotate(-90deg);
-}
-.btnContainer {
-  margin-left: 20px;
+.disabled {
+  display: none;
 }
 select {
   appearance: none;
