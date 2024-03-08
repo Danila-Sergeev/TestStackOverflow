@@ -9,7 +9,6 @@ const SearchBar: FC = (props) => {
   const question = useSelector((store: any) => store.question.items);
   const serach = useSelector((store: any) => store.search.items);
   const sort = useSelector((store: any) => store.sort.items);
-  const questionSearch = useSelector((store: any) => store.question.sortItems);
 
   const [serachQuery, setserachQuery] = useState("");
 

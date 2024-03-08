@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import Styles from "./SortBar.module.css";
-import arrow from "../../img/arrow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSort } from "../../services/actions/sort";
 

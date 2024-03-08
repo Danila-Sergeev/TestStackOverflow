@@ -4,24 +4,26 @@ import { useParams } from "react-router-dom";
 import { getIdQuestion } from "../../services/actions/question";
 import QuestionInfo from "../../components/QuestionInfo/QuestionInfo";
 import { v4 as uuidv4 } from "uuid";
+import Loader from "../../UI/Loader";
+import { toggleLoading } from "../../services/reduces/question";
 
-const InfoPage: FC = (props) => {
+const InfoPage: FC = () => {
   useEffect(() => {
-    dispatch(getIdQuestion(id));
+    dispatch(getIdQuestion(params.id));
+    dispatch(toggleLoading(true));
   }, []);
 
   const dispatch: any = useDispatch();
   const params = useParams();
-  const id = params.id;
-
   const question = useSelector((store: any) => store.id.items);
-  console.log(question);
+  const loading = useSelector((store: any) => store.id.isLoading);
+  console.log(loading);
 
   return (
     <div>
-      {question.map((info: any) => (
-        <QuestionInfo key={uuidv4()} obj={info} />
-      ))}
+      {!loading &&
+        question.map((info: any) => <QuestionInfo key={uuidv4()} obj={info} />)}
+      {loading && <Loader />}
     </div>
   );
 };
