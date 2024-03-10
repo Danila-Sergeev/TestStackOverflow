@@ -4,14 +4,14 @@ import HomePage from "../../Pages/HomePage/HomePage";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { getQuestion, setQuestion } from "../../services/actions/questions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { setSort } from "../../services/actions/sort";
 import InfoPage from "../../Pages/InfoPage/InfoPage";
 import Loader from "../../UI/Loader";
+import { useAppDispatch } from "../../utils/hoc";
 
 const App: FC = () => {
-  const dispatch: any = useDispatch();
-  const question = useSelector((store: any) => store.question.items);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getQuestion());
     dispatch(setQuestion([]));

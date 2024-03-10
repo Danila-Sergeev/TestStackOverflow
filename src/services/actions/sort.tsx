@@ -1,7 +1,8 @@
 import axios from "axios";
 import { SET_SORT } from "../reduces/sort";
+import { IQuestionData } from "../constants/constants";
 
-export const setSort = (arr: any) => {
+export const setSort = (arr: IQuestionData[]) => {
   return {
     type: SET_SORT,
     item: {

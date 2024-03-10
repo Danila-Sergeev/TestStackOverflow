@@ -1,11 +1,12 @@
 import React, { FC, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getIdQuestion } from "../../services/actions/question";
 import QuestionInfo from "../../components/QuestionInfo/QuestionInfo";
 import { v4 as uuidv4 } from "uuid";
 import Loader from "../../UI/Loader";
 import { toggleLoading } from "../../services/reduces/question";
+import { useAppDispatch } from "../../utils/hoc";
 
 const InfoPage: FC = () => {
   useEffect(() => {
@@ -13,16 +14,23 @@ const InfoPage: FC = () => {
     dispatch(toggleLoading(true));
   }, []);
 
-  const dispatch: any = useDispatch();
+  const dispatch = useAppDispatch();
   const params = useParams();
   const question = useSelector((store: any) => store.id.items);
   const loading = useSelector((store: any) => store.id.isLoading);
-  console.log(loading);
 
   return (
     <div>
       {!loading &&
-        question.map((info: any) => <QuestionInfo key={uuidv4()} obj={info} />)}
+        question.map((info: any) => (
+          <QuestionInfo
+            key={uuidv4()}
+            tags={info.tags}
+            title={info.title}
+            link={info.link}
+            name={info.owner.display_name}
+          />
+        ))}
       {loading && <Loader />}
     </div>
   );

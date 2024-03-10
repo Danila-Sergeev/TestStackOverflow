@@ -1,14 +1,15 @@
 import React, { FC, useState } from "react";
 import Styles from "./SortBar.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { setSort } from "../../services/actions/sort";
+import { useAppDispatch } from "../../utils/hoc";
 
-const SortBar: FC = (props) => {
-  const dispatch: any = useDispatch();
+const SortBar: FC = () => {
+  const dispatch = useAppDispatch();
   const question = useSelector((store: any) => store.question.items);
   const questionSearch = useSelector((store: any) => store.question.sortItems);
 
-  const sortPosts = (sorted: any) => {
+  const sortPosts = (sorted: string) => {
     let sortedArr;
     if (sorted === "answer_count") {
       sortedArr = [...question].sort((a, b) => b[sorted] - a[sorted]);

@@ -3,21 +3,24 @@ import Styles from "./QuestionInfo.module.css";
 import { v4 as uuidv4 } from "uuid";
 
 interface IQuestionMain {
-  obj: {};
+  name: string;
+  title: string;
+  link: string;
+  tags: string[];
 }
 
-const QuestionInfo: FC<IQuestionMain> = (obj: any) => {
-  console.log(obj);
+const QuestionInfo: FC<IQuestionMain> = (props) => {
+  const { name, title, link, tags } = props;
   return (
     <section className={Styles.main}>
-      <div className={Styles.name}>{obj.obj.owner.display_name}</div>
-      <div className={Styles.title}>{obj.obj.title}</div>
+      <div className={Styles.name}>{name}</div>
+      <div className={Styles.title}>{title}</div>
       <div className={Styles.link}>
-        <a className={Styles.link} href={obj.obj.link}>
+        <a className={Styles.link} href={link}>
           Ссылка на пост
         </a>
       </div>
-      {obj.obj.tags.map((tag: any) => (
+      {tags.map((tag: string) => (
         <div key={uuidv4()} className={Styles.tag}>
           {tag}
         </div>

@@ -4,21 +4,23 @@ import { v4 as uuidv4 } from "uuid";
 import { NavLink } from "react-router-dom";
 
 interface IQuestionMain {
-  question: {};
+  name: string;
+  id: string;
+  title: string;
+  count: number;
+  tags: string[];
 }
 
-const PostList: FC<IQuestionMain> = (question: any) => {
+const PostList: FC<IQuestionMain> = (props) => {
+  const { name, id, title, count, tags } = props;
   return (
-    <NavLink
-      to={`/${question.question.question_id}`}
-      className={Styles.container}
-    >
-      <div className={Styles.name}>{question.question.owner.display_name}</div>
-      <div className={Styles.theme}>{question.question.title}</div>
+    <NavLink to={`/${id}`} className={Styles.container}>
+      <div className={Styles.name}>{name}</div>
+      <div className={Styles.theme}>{title}</div>
       <div className={Styles.box}>
-        <div className={Styles.countAnsw}>{question.question.answer_count}</div>
+        <div className={Styles.countAnsw}>{count}</div>
         <div className={Styles.tagsBox}>
-          {question.question.tags.map((tag: string) => (
+          {tags.map((tag: string) => (
             <div key={uuidv4()} className={Styles.tags}>
               #{tag}
             </div>

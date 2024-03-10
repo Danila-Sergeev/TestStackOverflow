@@ -1,13 +1,41 @@
+import {
+  IQuestionmainData,
+  IQuestionData,
+  IQuestionForwardData,
+} from "../constants/constants";
+
 const GET_IDQUESTION = "GET_IDQUESTION";
 const LOADING_TOGGLE = "LOADING_TOGGLE";
 
-const defaultState = {
+interface IGetIdQuestion {
+  readonly type: typeof GET_IDQUESTION;
+  readonly payload: IQuestionForwardData;
+  readonly data: IQuestionmainData;
+  readonly items: IQuestionData[];
+}
+interface ILoading {
+  readonly type: typeof LOADING_TOGGLE;
+  readonly payload: boolean;
+}
+
+export type IQuestionActions = IGetIdQuestion | ILoading;
+
+type TquestionState = {
+  items: IQuestionData[];
+  isFetching: boolean;
+  isLoading: boolean;
+};
+
+const defaultState: TquestionState = {
   items: [],
   isFetching: true,
   isLoading: true,
 };
 
-export default function idQuestionReducer(state = defaultState, action: any) {
+export default function idQuestionReducer(
+  state = defaultState,
+  action: IQuestionActions
+) {
   switch (action.type) {
     case GET_IDQUESTION:
       return {
@@ -25,7 +53,7 @@ export default function idQuestionReducer(state = defaultState, action: any) {
   }
 }
 
-export const getIdQuestionRed = (question: any) => ({
+export const getIdQuestionRed = (question: IQuestionForwardData) => ({
   type: GET_IDQUESTION,
   payload: question,
 });
