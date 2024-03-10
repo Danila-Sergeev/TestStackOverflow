@@ -6,7 +6,6 @@ const InfoBar: FC = () => {
     <section className={Styles.container}>
       <div className={Styles.name}>Автор</div>
       <div className={Styles.theme}>Тема</div>
-
       <div className={Styles.box}>
         <div className={Styles.countAnsw}>Количество ответов</div>
         <div className={Styles.tagsBox}>

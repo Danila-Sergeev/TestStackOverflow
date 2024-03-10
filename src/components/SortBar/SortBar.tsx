@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import Styles from "./SortBar.module.css";
 import { useSelector } from "react-redux";
 import { setSort } from "../../services/actions/sort";

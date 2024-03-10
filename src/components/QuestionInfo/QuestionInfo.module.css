@@ -4,7 +4,9 @@
 }
 .main {
   margin: auto;
-  background-color: dimgrey;
+  margin-top: 200px;
+  background-color: darkgray;
+  border-radius: 20px;
   max-width: 800px;
   padding: 30px;
   font-weight: 600;

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { SET_SORT } from "../reduces/sort";
 import { IQuestionData } from "../constants/constants";
 
