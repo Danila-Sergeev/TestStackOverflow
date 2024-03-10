@@ -16,7 +16,7 @@ const QuestionInfo: FC<IQuestionMain> = (props) => {
       <div className={Styles.name}>{name}</div>
       <div className={Styles.title}>{title}</div>
       <div className={Styles.link}>
-        <a className={Styles.link} href={link}>
+        <a target="Starfall" className={Styles.link} href={link}>
           Ссылка на пост
         </a>
       </div>
