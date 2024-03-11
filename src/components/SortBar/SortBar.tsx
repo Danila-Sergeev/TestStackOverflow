@@ -3,13 +3,15 @@ import Styles from "./SortBar.module.css";
 import { useSelector } from "react-redux";
 import { setSort } from "../../services/actions/sort";
 import { useAppDispatch } from "../../utils/hoc";
-import { getQuestion } from "../../services/actions/questions";
+import { getQuestion, search } from "../../services/actions/questions";
 import { toggleLoading } from "../../services/reduces/questions";
 
 const SortBar: FC = () => {
   const dispatch = useAppDispatch();
   const question = useSelector((store: any) => store.question.items);
   const questionSearch = useSelector((store: any) => store.question.sortItems);
+  const searchData = useSelector((store: any) => store.search.item);
+  console.log(searchData);
   const [sortMethod, setsortMethod] = useState("activity");
 
   const OnClick = (event: any) => {
@@ -18,7 +20,9 @@ const SortBar: FC = () => {
 
   useEffect(() => {
     dispatch(toggleLoading(true));
-    dispatch(getQuestion(sortMethod));
+    searchData.item === ""
+      ? dispatch(getQuestion(sortMethod))
+      : dispatch(search(sortMethod, searchData.item));
   }, [sortMethod]);
 
   return (
@@ -54,9 +58,9 @@ const SortBar: FC = () => {
           </button>
           <button
             onClick={OnClick}
-            value="week"
+            value="creation"
             className={
-              sortMethod === "week"
+              sortMethod === "creation"
                 ? [Styles.btnActive, Styles.btn].join(" ")
                 : Styles.btn
             }

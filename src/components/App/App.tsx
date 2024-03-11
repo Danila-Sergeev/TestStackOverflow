@@ -11,8 +11,6 @@ const App: FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getQuestion("activity"));
-    dispatch(setQuestion([]));
-    dispatch(setSort([]));
   }, []);
 
   return (

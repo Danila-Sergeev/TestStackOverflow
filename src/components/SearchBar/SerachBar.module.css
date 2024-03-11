@@ -1,32 +1,7 @@
 .mainBox {
   max-width: 500px;
   margin: auto;
-}
-.btn {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 0 20px;
-  margin: 0 15px 15px 0;
-  outline: none;
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 17px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #385898;
-  background-color: #e7f3ff;
-  cursor: pointer;
-  user-select: none;
-  appearance: none;
-  touch-action: manipulation;
-}
-.btn:hover {
-  background-color: #dbe7f2;
-}
-.btn:active {
-  transform: scale(0.96);
+  margin-bottom: 30px;
 }
 .input {
   padding-left: 20px;

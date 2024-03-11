@@ -1,9 +1,10 @@
 import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import Styles from "./SerachBar.module.css";
 import { useSelector } from "react-redux";
-import { search } from "../../services/actions/search";
+import { getQuestion, search } from "../../services/actions/questions";
 import { setQuestion } from "../../services/actions/questions";
 import { useAppDispatch } from "../../utils/hoc";
+import { setSearchData } from "../../services/reduces/search";
 
 const SearchBar: FC = () => {
   const dispatch = useAppDispatch();
@@ -12,19 +13,15 @@ const SearchBar: FC = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setserachQuery(event.target.value);
+    event.target.value
+      ? dispatch(search("activity", event.target.value))
+      : dispatch(getQuestion("activity"));
   };
 
-  const onClick = () => {
-    dispatch(setQuestion(serachData));
-  };
+  const onClick = () => {};
 
   useEffect(() => {
-    if (serachQuery === "") {
-      dispatch(setQuestion([]));
-    }
-    if (serachQuery !== "") {
-      dispatch(search(serachQuery));
-    }
+    dispatch(setSearchData(serachQuery));
   }, [serachQuery]);
 
   return (
@@ -34,13 +31,10 @@ const SearchBar: FC = () => {
           className={Styles.input}
           type="text"
           name="search"
-          placeholder="Search theme.."
+          placeholder="Поиск..."
           onChange={handleChange}
           value={serachQuery}
         />
-        <button onClick={onClick} className={Styles.btn}>
-          Serach
-        </button>
       </div>
     </section>
   );

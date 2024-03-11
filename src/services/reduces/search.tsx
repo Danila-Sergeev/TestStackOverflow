@@ -1,43 +1,43 @@
 import { IQuestionData, IQuestionmainData } from "../constants/constants";
 
-export const SEARCH = "SEARCH";
+export const SEARCH_DATA = "SEARCH_DATA";
 
 interface ISetSearch {
-  readonly type: typeof SEARCH;
-  readonly payload: IQuestionmainData;
-  readonly items: IQuestionData;
+  readonly type: typeof SEARCH_DATA;
+  readonly payload: string;
 }
 
 export type ISearchActions = ISetSearch;
 
 type TsearchState = {
   item: string;
-  items: any;
-  isFetching: boolean;
 };
 
 const defaultState: TsearchState = {
   item: "",
-  items: [],
-  isFetching: true,
 };
 
 export default function searchReducer(
   state = defaultState,
   action: ISearchActions
 ) {
+  console.log(action);
   switch (action.type) {
-    case SEARCH:
+    case SEARCH_DATA:
       return {
         ...state,
-        items: action.payload.items,
+        item: action.payload,
       };
     default:
       return state;
   }
 }
 
-export const Search = (item: IQuestionData) => ({
-  type: SEARCH,
-  payload: item,
-});
+export const setSearchData = (item: string) => {
+  return {
+    type: SEARCH_DATA,
+    payload: {
+      item,
+    },
+  };
+};
