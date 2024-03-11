@@ -1,18 +1,30 @@
-.title {
-  max-width: 500px;
-  margin: auto;
-}
 .main {
-  margin: auto;
-  margin-top: 200px;
-  background-color: darkgray;
+  display: flex;
+  max-width: 1080px;
+  text-align: start;
+  flex-direction: column;
+  justify-content: start;
   border-radius: 20px;
-  max-width: 800px;
   padding: 30px;
+  margin: auto;
+  border: solid 1px;
+  border-color: #2668a9;
+}
+.title {
+  text-align: start;
   font-weight: 600;
 }
+.autorInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.img {
+  width: 50px;
+}
 .name {
-  margin-bottom: 30px;
+  font-weight: 600;
+  margin-left: 30px;
 }
 .link {
   margin: auto;
@@ -25,10 +37,32 @@
 .link:hover {
   color: cyan;
 }
+.tagContainer {
+  display: flex;
+}
 .tag {
-  background-color: cyan;
-  max-width: 150px;
+  align-items: center;
+  justify-content: center;
+  background-color: #edf5fd;
   border-radius: 10px;
-  margin: auto;
-  margin-top: 10px;
+  padding: 6px;
+  margin: 2px;
+  color: #2668a9;
+  margin-right: 5px;
+}
+pre {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-body1);
+  background-color: #f1f2f3;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 1080px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+code {
+  background-color: #f1f2f3;
+  border-radius: 5px;
+  max-width: 1080px;
+  padding: 3px;
 }

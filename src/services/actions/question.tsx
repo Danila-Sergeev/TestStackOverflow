@@ -5,7 +5,12 @@ import { useAppDispatch } from "../../utils/hoc";
 export const getIdQuestion = (id: string | undefined) => {
   return async (dispatch = useAppDispatch()) => {
     const response = await axios.get(
-      `https://api.stackexchange.com/2.3/questions/${id}?order=desc&sort=activity&site=stackoverflow`
+      `https://api.stackexchange.com/2.3/questions/${id}?order=desc&sort=activity&site=stackoverflow&filter=!nNPvSNP3wf`,
+      {
+        headers: {
+          "Accept-Encoding": "GZIP",
+        },
+      }
     );
     dispatch(toggleLoading(false));
     dispatch(getIdQuestionRed(response));

@@ -25,6 +25,8 @@ const InfoPage: FC = () => {
         question.map((info: any) => (
           <QuestionInfo
             key={uuidv4()}
+            profile_image={info.owner.profile_image}
+            body={info.body}
             tags={info.tags}
             title={info.title}
             link={info.link}

@@ -36,6 +36,7 @@ export default function idQuestionReducer(
   state = defaultState,
   action: IQuestionActions
 ) {
+  console.log(action);
   switch (action.type) {
     case GET_IDQUESTION:
       return {
