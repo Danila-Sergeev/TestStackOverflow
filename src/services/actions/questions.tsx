@@ -1,12 +1,14 @@
 import axios from "axios";
 import { SET_QUESTION, getQuestions } from "../reduces/questions";
 import { API_URL } from "../../utils/constants";
-import { toggleLoading } from "../reduces/question";
+import { toggleLoading } from "../reduces/questions";
 import { useAppDispatch } from "../../utils/hoc";
 
-export const getQuestion = () => {
+export const getQuestion = (sort: string, page: number = 1) => {
   return async (dispatch = useAppDispatch()) => {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(
+      `https://api.stackexchange.com/2.3/questions?page=${page}&pagesize=100&order=desc&sort=${sort}&site=stackoverflow`
+    );
 
     dispatch(getQuestions(response.data));
     dispatch(toggleLoading(false));

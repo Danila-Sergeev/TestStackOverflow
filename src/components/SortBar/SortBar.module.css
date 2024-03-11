@@ -9,36 +9,35 @@
 .disabled {
   display: none;
 }
-select {
-  appearance: none;
-  outline: 10px red;
-  border: 1px solid #ccc;
-  box-shadow: none;
-  flex: 1;
-  padding: 0 1em;
-  background-color: #fff;
-  cursor: pointer;
-}
-/* Remove IE arrow */
-select::-ms-expand {
-  display: none;
-}
-/* Custom Select wrapper */
-.select {
-  position: relative;
+.sortBox {
   display: flex;
-  width: 200px;
-  height: 3em;
-  border-radius: 0.25em;
-  overflow: hidden;
+  width: 600px;
+  justify-content: space-around;
+  align-items: center;
 }
-/* Arrow */
-.select::after {
-  content: "\25BC";
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1em;
-  transition: 0.25s all ease;
-  pointer-events: none;
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 20px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  text-decoration: none;
+  color: #385898;
+  background-color: #e7f3ff;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+.btn:hover {
+  background-color: #dbe7f2;
+}
+.btn:active {
+  transform: scale(0.96);
+}
+.btnActive {
+  font-weight: 600;
+  background-color: #cbe0f4;
 }

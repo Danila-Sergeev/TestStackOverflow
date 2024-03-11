@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortBar from "../../components/SortBar/SortBar";
 import InfoBar from "../../components/InfoBar/InfoBar";
@@ -6,51 +6,57 @@ import PostList from "../../components/PostList/PostList";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import Loader from "../../UI/Loader";
+import ReactPaginate from "react-paginate";
+import Styles from "./Home.module.css";
 
 const HomePage: FC = () => {
   const question = useSelector((store: any) => store.question.items);
-  const questionSearch = useSelector((store: any) => store.question.sortItems);
-  const questionSort = useSelector((store: any) => store.sort.items);
-  const loading = useSelector((store: any) => store.id.isLoading);
+  const loading = useSelector((store: any) => store.question.isLoading);
+
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const itemsPerPage = 5;
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = question.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(question.length / itemsPerPage);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event: any) => {
+    const newOffset = (event.selected * itemsPerPage) % question.length;
+    setItemOffset(newOffset);
+  };
 
   return (
     <div>
       <SearchBar />
       <SortBar />
       <InfoBar />
-      {questionSearch.length === 0 || question === questionSearch
-        ? questionSort.length === 0
-          ? question.map((questionData: any) => (
-              <PostList
-                key={uuidv4()}
-                tags={questionData.tags}
-                count={questionData.answer_count}
-                title={questionData.title}
-                id={questionData.question_id}
-                name={questionData.owner.display_name}
-              />
-            ))
-          : questionSort.map((questionData: any) => (
-              <PostList
-                key={uuidv4()}
-                tags={questionData.tags}
-                count={questionData.answer_count}
-                title={questionData.title}
-                id={questionData.question_id}
-                name={questionData.owner.display_name}
-              />
-            ))
-        : questionSearch.map((questionData: any) => (
-            <PostList
-              key={uuidv4()}
-              tags={questionData.tags}
-              count={questionData.answer_count}
-              title={questionData.title}
-              id={questionData.question_id}
-              name={questionData.owner.display_name}
-            />
-          ))}
+      {!loading &&
+        currentItems.map((questionData: any) => (
+          <PostList
+            key={uuidv4()}
+            tags={questionData.tags}
+            count={questionData.answer_count}
+            title={questionData.title}
+            id={questionData.question_id}
+            name={questionData.owner.display_name}
+          />
+        ))}
       {loading && <Loader />}
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        containerClassName={Styles.pagination}
+        pageLinkClassName={Styles.page_num}
+        previousLinkClassName={Styles.page_num}
+        nextLinkClassName={Styles.page_num}
+        activeLinkClassName={Styles.active}
+      />
     </div>
   );
 };

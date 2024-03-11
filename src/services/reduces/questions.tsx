@@ -2,6 +2,7 @@ import { IQuestionmainData, IQuestionData } from "../constants/constants";
 
 const GET_QUESTION = "GET_QUESTION";
 export const SET_QUESTION = "SET_QUESTION";
+const LOADING_TOGGLE = "LOADING_TOGGLE";
 
 interface IGetQuestion {
   readonly type: typeof GET_QUESTION;
@@ -13,19 +14,25 @@ interface ISetQuestion {
   readonly questions: IQuestionData[];
   readonly item: IQuestionmainData;
 }
+interface ILoading {
+  readonly type: typeof LOADING_TOGGLE;
+  readonly payload: boolean;
+}
 
-export type IQuestionsActions = IGetQuestion | ISetQuestion;
+export type IQuestionsActions = IGetQuestion | ISetQuestion | ILoading;
 
 type TQuestionsState = {
   items: IQuestionData[];
   sortItems: IQuestionData[];
   isFetching: boolean;
+  isLoading: boolean;
 };
 
 const defaultState: TQuestionsState = {
   items: [],
   sortItems: [],
   isFetching: true,
+  isLoading: true,
 };
 
 export default function questionReducer(
@@ -46,6 +53,11 @@ export default function questionReducer(
         ...state,
         sortItems: action.item.questions,
       };
+    case LOADING_TOGGLE:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
     default:
       return state;
   }
@@ -54,4 +66,8 @@ export default function questionReducer(
 export const getQuestions = (question: IQuestionmainData) => ({
   type: GET_QUESTION,
   payload: question,
+});
+export const toggleLoading = (state: boolean) => ({
+  type: LOADING_TOGGLE,
+  payload: state,
 });

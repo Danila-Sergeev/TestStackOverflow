@@ -10,7 +10,7 @@ import { useAppDispatch } from "../../utils/hoc";
 const App: FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getQuestion());
+    dispatch(getQuestion("activity"));
     dispatch(setQuestion([]));
     dispatch(setSort([]));
   }, []);
