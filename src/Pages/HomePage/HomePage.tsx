@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortBar from "../../components/SortBar/SortBar";
 import InfoBar from "../../components/InfoBar/InfoBar";
@@ -8,8 +8,11 @@ import { v4 as uuidv4 } from "uuid";
 import Loader from "../../UI/Loader";
 import ReactPaginate from "react-paginate";
 import Styles from "./Home.module.css";
+import { resetAnswers } from "../../services/reduces/answers";
+import { useAppDispatch } from "../../utils/hoc";
 
 const HomePage: FC = () => {
+  const dispatch = useAppDispatch();
   const question = useSelector((store: any) => store.question.items);
   const loading = useSelector((store: any) => store.question.isLoading);
 
@@ -25,6 +28,9 @@ const HomePage: FC = () => {
     const newOffset = (event.selected * itemsPerPage) % question.length;
     setItemOffset(newOffset);
   };
+  useEffect(() => {
+    dispatch(resetAnswers());
+  }, []);
 
   return (
     <div>

@@ -21,7 +21,6 @@ export default function searchReducer(
   state = defaultState,
   action: ISearchActions
 ) {
-  console.log(action);
   switch (action.type) {
     case SEARCH_DATA:
       return {

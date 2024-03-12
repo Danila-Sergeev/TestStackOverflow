@@ -11,7 +11,6 @@ const SortBar: FC = () => {
   const question = useSelector((store: any) => store.question.items);
   const questionSearch = useSelector((store: any) => store.question.sortItems);
   const searchData = useSelector((store: any) => store.search.item);
-  console.log(searchData);
   const [sortMethod, setsortMethod] = useState("activity");
 
   const OnClick = (event: any) => {

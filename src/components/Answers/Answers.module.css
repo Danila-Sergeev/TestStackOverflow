@@ -1,0 +1,13 @@
+.name {
+  font-weight: 600;
+  margin-left: 30px;
+}
+.autorInfo {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.img {
+  width: 50px;
+}

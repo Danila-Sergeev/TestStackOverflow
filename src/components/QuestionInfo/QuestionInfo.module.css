@@ -4,6 +4,7 @@
   text-align: start;
   flex-direction: column;
   justify-content: start;
+
   border-radius: 20px;
   padding: 30px;
   margin: auto;
@@ -50,6 +51,11 @@
   color: #2668a9;
   margin-right: 5px;
 }
+.answerCount {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
 pre {
   font-family: var(--ff-mono);
   font-size: var(--fs-body1);
@@ -65,4 +71,7 @@ code {
   border-radius: 5px;
   max-width: 1080px;
   padding: 3px;
+}
+img {
+  max-width: 300px;
 }

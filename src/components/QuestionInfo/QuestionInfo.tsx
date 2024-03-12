@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 import Styles from "./QuestionInfo.module.css";
 import { v4 as uuidv4 } from "uuid";
-import parse, { HTMLReactParserOptions } from "html-react-parser";
+import parse from "html-react-parser";
+import Answers from "../Answers/Answers";
+import { IQuestionData } from "../../services/constants/constants";
 
 interface IQuestionMain {
   name: string;
@@ -10,11 +12,21 @@ interface IQuestionMain {
   tags: string[];
   body: string;
   profile_image: string;
+  answers: IQuestionData[];
+  answer_count: number;
 }
 
 const QuestionInfo: FC<IQuestionMain> = (props) => {
-  const { name, title, link, tags, body, profile_image } = props;
-  console.log(profile_image);
+  const {
+    name,
+    title,
+    link,
+    tags,
+    body,
+    profile_image,
+    answers,
+    answer_count,
+  } = props;
   return (
     <section className={Styles.main}>
       <div className={Styles.autorInfo}>
@@ -36,6 +48,12 @@ const QuestionInfo: FC<IQuestionMain> = (props) => {
           Ссылка на пост
         </a>
       </div>
+      <div className={Styles.answerCount}>{answer_count} Ответов</div>
+      {answer_count !== 0 ? (
+        <Answers key={uuidv4()} answers={answers} />
+      ) : (
+        <></>
+      )}
     </section>
   );
 };

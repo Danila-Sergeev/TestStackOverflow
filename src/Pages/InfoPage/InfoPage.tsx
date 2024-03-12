@@ -25,12 +25,14 @@ const InfoPage: FC = () => {
         question.map((info: any) => (
           <QuestionInfo
             key={uuidv4()}
+            answers={info.answers}
             profile_image={info.owner.profile_image}
             body={info.body}
             tags={info.tags}
             title={info.title}
             link={info.link}
             name={info.owner.display_name}
+            answer_count={info.answer_count}
           />
         ))}
       {loading && <Loader />}
